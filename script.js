@@ -1,4 +1,4 @@
-document.getElementById('strainForm').addEventListener('submit', async function(event) {
+document.getElementById('strainForm').addEventListener('submit', async function(event) { 
     event.preventDefault();
 
     const strainNumber = document.getElementById('strainNumber').value;
@@ -7,7 +7,7 @@ document.getElementById('strainForm').addEventListener('submit', async function(
     const date = document.getElementById('date').value;
     const massResult = document.getElementById('massResult').value;
 
-    const response = await fetch('/strains', {
+    const response = await fetch('https://re0-3.onrender.com/strains', { // 使用完整的后端 URL
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ document.getElementById('strainForm').addEventListener('submit', async function(
 document.getElementById('searchButton').addEventListener('click', async function() {
     const searchTerm = document.getElementById('searchTerm').value;
 
-    const response = await fetch(`/strains?search=${searchTerm}`);
+    const response = await fetch(`https://re0-3.onrender.com/strains?search=${searchTerm}`); // 使用完整的后端 URL
     const results = await response.json();
     const resultsBody = document.getElementById('resultsBody');
     resultsBody.innerHTML = '';
@@ -43,3 +43,4 @@ document.getElementById('searchButton').addEventListener('click', async function
         resultsBody.appendChild(row);
     });
 });
+
