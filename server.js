@@ -47,6 +47,7 @@ app.get('/strains', (req, res) => {
 });
 
 // 启动服务器
-app.listen(3000, () => {
-    console.log('服务器在 http://localhost:3000 运行');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`服务器在 http://localhost:${port} 运行`);
 });
