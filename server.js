@@ -1,18 +1,17 @@
-const express = require('express');
+const express = require('express'); 
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose(); // 引入 SQLite3 模块
 
 const app = express();
 const db = new sqlite3.Database('./strains.db'); // 或使用 'C:\\backend\\strains.db'
-// 创建一个内存数据库（或指定文件路径）
 
 app.use(cors());
 app.use(bodyParser.json());
 
 // 创建数据库表
 db.serialize(() => {
-    db.run("CREATE TABLE strains (id INTEGER PRIMARY KEY, strain_number TEXT, storage_location TEXT, preserver TEXT, date TEXT, mass_spectrometry_result TEXT)");
+    db.run("CREATE TABLE IF NOT EXISTS strains (id INTEGER PRIMARY KEY, strain_number TEXT, storage_location TEXT, preserver TEXT, date TEXT, mass_spectrometry_result TEXT)");
 });
 
 // 添加菌株信息的 API
