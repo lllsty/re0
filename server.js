@@ -4,7 +4,7 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose(); // 引入 SQLite3 模块
 
 const app = express();
-const db = new sqlite3.Database('strains.db'); // 或使用 'C:\\backend\\strains.db'
+const db = new sqlite3.Database('./strains.db'); // 或使用 'C:\\backend\\strains.db'
 // 创建一个内存数据库（或指定文件路径）
 
 app.use(cors());
