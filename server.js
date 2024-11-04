@@ -1,13 +1,17 @@
 const express = require('express'); 
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose(); // 引入 SQLite3 模块
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path'); // 引入 path 模块
 
 const app = express();
-const db = new sqlite3.Database('./strains.db'); // 或使用 'C:\\backend\\strains.db'
+const db = new sqlite3.Database('./strains.db');
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// 设置静态文件夹
+app.use(express.static(path.join(__dirname, 'public'))); // 添加这一行
 
 // 创建数据库表
 db.serialize(() => {
